@@ -98,14 +98,12 @@
             </div>
           </div>
         {%- endif -%}
-        <div class="card__content collections-content">
+        {% comment %} <div class="card__content collections-content">
           <div class="card__information collections-card-descripiton">
-            <h3
-              class="card__heading"
+            <h3 class="card__heading"
               {% if card_product.featured_media == null and settings.card_style == 'standard' %}
                 id="title-{{ section_id }}-{{ card_product.id }}"
-              {% endif %}
-            >
+              {% endif %}>
               <a
                 href="{{ card_product.url }}"
                 id="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"
@@ -133,7 +131,7 @@
               </span>
             {%- endif -%}
           </div> {% endcomment %}
-        </div>
+        </div> {% endcomment %}
       </div>
       <div class="card__content collections-content">
         <div class="card__information collections-card-descripiton">
@@ -347,10 +345,8 @@
       "
       style="--ratio-percent: 100%;"
     >
-      <div
-        class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if settings.card_style == 'standard' %} ratio{% endif %}"
-        style="--ratio-percent: 100%;"
-      >
+      <div class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if settings.card_style == 'standard' %} ratio{% endif %}"
+        style="--ratio-percent: 100%;">
         <div class="card__content collections-content">
           <div class="card__information collections-card-descripiton">
             <h3 class="card__heading">

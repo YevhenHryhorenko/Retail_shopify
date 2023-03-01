@@ -1473,7 +1473,7 @@
       {
         "type": "checkbox",
         "id": "predictive_search_enabled",
-        "default": true,
+        "default": false,
         "label": "t:settings_schema.search_input.settings.predictive_search_enabled.label"
       },
       {
