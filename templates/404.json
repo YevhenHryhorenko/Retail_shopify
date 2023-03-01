@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "mains": {
+      "type": "main-404",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "mains"
+  ]
+}

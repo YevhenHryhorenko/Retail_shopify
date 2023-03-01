@@ -1,0 +1,104 @@
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("./Proxima Nova Regular.eot");
+	src: url("./Proxima Nova Regular.eot?#iefix") format("embedded-opentype"),
+		url("./Proxima Nova Regular.woff") format("woff"),
+		url("./Proxima Nova Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("./Proxima Nova Bold.eot");
+	src: local("☺"), url("./Proxima Nova Bold.woff") format("woff"),
+		url("./Proxima Nova Bold.ttf") format("truetype"),
+		url("./Proxima Nova Bold.svg") format("svg");
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("./Proxima Nova Semibold.eot");
+	src: local("☺"), url("./Proxima Nova Semibold.woff") format("woff"),
+		url("./Proxima Nova Semibold.ttf") format("truetype"),
+		url("./Proxima Nova Semibold.svg") format("svg");
+	font-weight: 600;
+	font-style: normal;
+}
+
+.collection-title {
+	text-align: center;
+	font-family: "Proxima Nova", serif;
+	font-weight: 700;
+	font-size: 2rem;
+	line-height: 38px;
+	color: #111010;
+}
+
+@media screen and (min-width: 992px) {
+	.collection-title {
+		font-size: 3rem;
+		line-height: 48px;
+	}
+}
+
+.collections-price {
+	text-align: center;
+}
+
+.collections-content {
+	/* position: absolute !important;
+    bottom: -30px !important;
+    height: 170px !important;
+	background-color: #fff; */
+}
+
+.collections-card {
+	box-shadow: 0px 8px 16px rgb(0 0 0 / 4%);
+}
+
+.collections-card-title {
+	font-family: "Proxima Nova", serif;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 1;
+	text-align: center;
+	text-transform: capitalize;
+	color: #111010;
+}
+
+@media screen and (min-width: 992px) {
+	.collections-card-title {
+		font-size: 22px;
+	}
+}
+
+.collections-card-descripiton {
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+}
+
+.collections-item-price-s {
+	font-family: "Proxima Nova", serif;
+	font-size: 12px !important;
+	line-height: 16px;
+	text-transform: capitalize;
+	color: #cacaca !important;
+}
+
+.collections-item-price {
+	font-family: "Proxima Nova", serif;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 1;
+	text-transform: capitalize;
+	color: rgba(17, 16, 16, 0.5);
+}
+
+@media screen and (min-width: 992px) {
+	.collections-item-price {
+		font-size: 16px;
+	}
+}

@@ -1,0 +1,91 @@
+<div style="overflow: hidden;">
+  <div class="wrapper">
+    {% for i in (1..2) %}
+      <div class="wrapper__edgrunner">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'labelText' %}
+              <div>
+                {{ block.settings.textId }}
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% style %}
+  .p {
+    color: {{ section.settings.favouriteColor }};
+  }
+{% endstyle %}
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .wrapper {
+    background-color: blue;
+    display: flex;
+    overflow: hidden;
+    width: 200vw;
+  }
+
+  .wrapper__edgrunner {
+    width: 100%;
+    height: 100px;
+    animation-duration: 5s;
+    background-color: aqua;
+    animation-name: runner;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  @keyframes runner {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "main secting",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "favouriteColor",
+      "label": "change color"
+    }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "labelText",
+      "name": "string",
+      "settings": [
+        {
+          "id": "textId",
+          "type": "text",
+          "label": "name paragraph"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "our secting"
+    }
+  ]
+}
+{% endschema %}
