@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "catalog": {
+      "type": "catalog",
+      "settings": {
+      }
+    },
+    "rooms": {
+      "type": "rooms",
+      "settings": {
+      }
+    },
+    "filters": {
+      "type": "filters",
+      "settings": {
+      }
+    },
+    "custom_collection": {
+      "type": "custom-collection",
+      "settings": {
+      }
+    },
+    "banner": {
+      "type": "banner",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "catalog",
+    "rooms",
+    "filters",
+    "custom_collection",
+    "banner"
+  ]
+}

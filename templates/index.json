@@ -5,32 +5,45 @@
       "settings": {
       }
     },
-      "category_products": {
-        "type": "category-products"
-      },
-      "vision": {
-        "type": "vision"
-      },
-      "solutions": {
-        "type": "solutions"
-      },
-      "projects": {
-        "type": "projects"
-      },
-      "custom-collection": {
-        "type": "custom-collection"
-      },
-      "showrooms": {
-        "type": "showrooms"
+    "category_products": {
+      "type": "category-products",
+      "settings": {
       }
+    },
+    "vision": {
+      "type": "vision",
+      "settings": {
+      }
+    },
+    "custom-collection": {
+      "type": "custom-collection",
+      "settings": {
+        "category_top_left": "all"
+      }
+    },
+    "solutions": {
+      "type": "solutions",
+      "settings": {
+      }
+    },
+    "projects": {
+      "type": "projects",
+      "settings": {
+      }
+    },
+    "showrooms": {
+      "type": "showrooms",
+      "settings": {
+      }
+    }
   },
   "order": [
     "image_banner",
     "category_products",
     "vision",
+    "custom-collection",
     "solutions",
     "projects",
-    "custom-collection",
     "showrooms"
   ]
 }

@@ -1,11 +1,14 @@
 <section class="container e--dsk jcc">
   <div class="collections d-flex flex-column marg-b">
-    <h2 class="h2">Tile Collections</h2>
-    <hr/>
-    <p class="txt txt-15">
-      Lorem Ipsum is simply dummy text of the printing and typesetting
-      industry. Lorem Ipsum has been the industry's standard dummy text.
-    </p>
+    {% if page.title != "Catalog" %}
+      <h2 class="h2">Tile Collections</h2>
+      <hr/>
+      <p class="txt txt-15">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text.
+      </p>
+    {% endif %}
+
     <div class="collections-cards">
       {%- for product in section.settings.category_top_left.products -%}
         {% render 'custom-card-product', card_product: product %}
