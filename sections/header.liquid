@@ -26,14 +26,34 @@
         </button>
 
         <nav>
-          <a href="./index.html" class="header-link active">Home</a>
-          <a href="#" class="header-link">Spaces</a>
-          <a href="./catalog_page.html" class="header-link">Products &amp; Services</a>
-          <a href="#" class="header-link">Showrooms</a>
-          <a href="#" class="header-link">Showrooms</a>
-          <a href="#" class="header-link">Company</a>
-          <a href="#" class="header-link">Media</a>
-          <a href="#" class="header-link">CONTACT</a>
+          <ul class="menu d-flex">
+            {% for link in section.settings.main_menu.links %}
+              <li class="menu-link">
+                <a class="header-link" href="{{ link.url }}">{{ link.title }}</a>
+
+                {% if link.links.size > 0 %}
+                  <ul class="menu dropdown-child">
+                    {% for child_link in link.links %}
+                      <li class="menu-link">
+                        <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+
+                        {% if child_link.links.size > 0 %}
+                          <ul class="menu dropdown-grandchild">
+                            {% for grandchild_link in child_link.links %}
+                              <li class="menu-link">
+                                <a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+
         </nav>
 
         <div class="header-right-nav">
@@ -63,3 +83,16 @@
     </div>
   </div>
 </header>
+
+{% schema %}
+  {
+    "name": "header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "main_menu",
+        "label": "Add your menu-link"
+      }
+    ]
+  }
+{% endschema %}
