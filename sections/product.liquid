@@ -1,18 +1,18 @@
 <section>
   <div class="container">
     <div class="d-flex">
-      <div class="basis-40 d-flex flex-column">
-        <picture>
-          {{ product.images[0] | image_url: width: 1946 | image_tag: 
+      <div class="basis-660 d-flex flex-column e--f-shrink-0">
+        <picture class="main-image"> 
+          {{ product.images[0] | image_url: width: 900 | image_tag: 
            class: image_class,
            loading: lazy,
            sizes: sizes,
            widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946' }}
         </picture>
-        <div class="d-flex">
+        <div class="d-flex e--f-start">
           {% for image in product.images offset: 1 %}
             <picture>
-              {{ image | image_url: width: 900 | image_tag: 
+              {{ image | image_url: width: 160 | image_tag: 
                class: "sub-image",
                loading: lazy,
                sizes: sizes,
