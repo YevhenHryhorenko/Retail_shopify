@@ -18,6 +18,7 @@
     "custom_collection": {
       "type": "custom-collection",
       "settings": {
+        "category_top_left": "all"
       }
     },
     "banner": {
