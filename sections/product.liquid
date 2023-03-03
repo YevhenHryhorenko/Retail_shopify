@@ -1,57 +1,118 @@
 <section>
   <div class="container">
-    <div class="d-flex">
+    <div class="d-flex fl-start df-64">
       <div class="basis-660 d-flex flex-column e--f-shrink-0">
-        <picture class="main-image"> 
-          {{ product.images[0] | image_url: width: 900 | image_tag: 
-           class: image_class,
-           loading: lazy,
-           sizes: sizes,
-           widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946' }}
+        <picture class="main-image">
+          {{
+            product.images[0]
+            | image_url: width: 900
+            | image_tag:
+              class: image_class,
+              loading: lazy,
+              sizes: sizes,
+              widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946'
+          }}
         </picture>
         <div class="d-flex e--f-start">
           {% for image in product.images offset: 1 %}
             <picture>
-              {{ image | image_url: width: 160 | image_tag: 
-               class: "sub-image",
-               loading: lazy,
-               sizes: sizes,
-               widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946' }}
+              {{
+                image
+                | image_url: width: 160
+                | image_tag:
+                  class: 'sub-image',
+                  loading: lazy,
+                  sizes: sizes,
+                  widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946'
+              }}
             </picture>
           {% endfor %}
-
         </div>
       </div>
 
       <div class="basis-60">
-        <div class="">
-          <h2 class="">Product Name</h2>
-          <p class="">199,50 SAR</p>
-          <p class="">Product Short Description senectus et netus et malesuada fames ac turpis egestas. Vesitbulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend
+        <div class="product-description">
+          <h2 class="h1">Product Name</h2>
+          <p class="price">199,50 SAR</p>
+          <p class="txt-15">
+            Product Short Description senectus et netus et malesuada fames ac turpis egestas. Vesitbulum tortor quam,
+            feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+            ultricies mi vitae est. Mauris placerat eleifend
           </p>
         </div>
-        <div class="">
-          <button class="" alt="one">1</button>
-          <a href="cart.html">
-            <button alt="add to cart" class="goods--block__btn2">Add to cart</button>
-          </a>
-          <button
-            aria-label="like"
-            alt="just button"
-            class="goods--block__btn3">
-            <svg
-              class="goods--block__svg"
-              height="26"
-              width="26">
-              <use xlink:href="./img/icons.svg#icon-25"></use>
-            </svg>
-          </button>
+        <div class="product-buttons">
+          <div
+            id="Quantity-Form-{{ section.id }}"
+            class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
+            {% # theme-check-disable %}
+            {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
+            {% # theme-check-enable %}
+            <quantity-input class="quantity">
+              <button class="quantity__button no-js-hidden" name="minus" type="button">
+                <span class="visually-hidden">
+                  {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                </span>
+                {% render 'icon-minus' %}
+              </button>
+              <input
+                class="quantity__input"
+                type="number"
+                name="quantity"
+                id="Quantity-{{ section.id }}"
+                data-cart-quantity="{{ cart_qty }}"
+                data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                  data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                  max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                {% endif %}
+                step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                form="{{ product_form_id }}"
+              >
+              <button class="quantity__button no-js-hidden" name="plus" type="button">
+                <span class="visually-hidden">
+                  {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                </span>
+                {% render 'icon-plus' %}
+              </button>
+            </quantity-input>
+            <div class="quantity__rules caption no-js-hidden">
+              {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
+                <span class="divider">
+                  {{-
+                    'products.product.quantity.multiples_of'
+                    | t: quantity: product.selected_or_first_available_variant.quantity_rule.increment
+                  -}}
+                </span>
+              {%- endif -%}
+              {%- if product.selected_or_first_available_variant.quantity_rule.min > 1 -%}
+                <span class="divider">
+                  {{-
+                    'products.product.quantity.minimum_of'
+                    | t: quantity: product.selected_or_first_available_variant.quantity_rule.min
+                  -}}
+                </span>
+              {%- endif -%}
+              {%- if product.selected_or_first_available_variant.quantity_rule.max != null -%}
+                <span class="divider">
+                  {{-
+                    'products.product.quantity.maximum_of'
+                    | t: quantity: product.selected_or_first_available_variant.quantity_rule.max
+                  -}}
+                </span>
+              {%- endif -%}
+            </div>
+          </div>
         </div>
-        <div class="goods--block__item3">
-          <ul class="goods--block__list">
-            <li class="goods--block__list-child">Lorem ipsum dolor sit amet,</li>
-            <li class="goods--block__list-child goods-child">Lorem ipsum dolor sit amet,</li>
-            <li class="goods--block__list-child">Lorem ipsum dolor sit amet,</li>
+        <div class="">
+          <ul class="product-list">
+            <li class="product-list-item">Lorem ipsum dolor sit amet,</li>
+            <li class="product-list-item">Lorem ipsum dolor sit amet,</li>
+            <li class="product-list-item">Lorem ipsum dolor sit amet,</li>
           </ul>
         </div>
       </div>
@@ -63,6 +124,11 @@
       <button alt="Details" class="goods--block__bottom-span2">Details</button>
       <button alt="Reviews" class="goods--block__bottom-span3">Reviews(0)</button>
     </div>
-    <p class="goods--block__bottom-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ornare euismod arcu, ac laoreet metus pulvinar feugiat. Praesent in feugiat ante, a dictum nunc. Pellentesque convallis tortor quis purus finibus aliquet. In hac habitasse platea dictumst. Proin vestibulum ante ac faucibus tristique. Integer quis efficitur dolor, at dignissim dolor.</p>
+    <p class="goods--block__bottom-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ornare euismod arcu, ac laoreet metus pulvinar
+      feugiat. Praesent in feugiat ante, a dictum nunc. Pellentesque convallis tortor quis purus finibus aliquet. In hac
+      habitasse platea dictumst. Proin vestibulum ante ac faucibus tristique. Integer quis efficitur dolor, at dignissim
+      dolor.
+    </p>
   </div>
 </section>
