@@ -1,12 +1,12 @@
 <header>
   <div class="container">
     <div class="header">
-      <button class="header-icon e--mob">
-        <img
-          src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/mob-menu.svg?v=1677694745"
-          alt="Mobile menu"
-          width="24"
-          height="12" />
+      <button class="menu-burger-btn header-icon e--mob">
+        <div class="menu-btn-burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </button>
 
       <img
@@ -24,7 +24,32 @@
             width="17"
             height="17" />
         </button>
-        <nav>
+
+        <div class="menu-burger">
+          <nav>
+            <ul class="menu-burger-ul">
+              {% for link in section.settings.main_menu.links %}
+                <li>
+                  {%- capture page_url -%}
+                    {%- if page.url == null -%}
+                      {{- "/" -}}
+                    {%- else -%}
+                      {{- page.url -}}
+                    {%- endif -%}
+                  {%- endcapture -%}
+                  <a
+                    class="header-link header-burger-link {% if page_url == link.url %} active {% endif %}"
+                    href="{{ link.url }}"
+                  >
+                    {{- link.title -}}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+
+        <nav class="header-nav">
           <ul class="menu d-flex">
             {% for link in section.settings.main_menu.links %}
               <li class="menu-link">
@@ -69,6 +94,18 @@
     </div>
   </div>
 </header>
+
+{% javascript %}
+  const menuBtn = document.querySelector('.menu-btn-burger');
+  const menu = document.querySelector('.menu-burger');
+  const body = document.querySelector('body');
+
+  menuBtn.addEventListener('click', function () {
+    menu.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+    body.classList.toggle('ohidden');
+  });
+{% endjavascript %}
 
 {% schema %}
   {
