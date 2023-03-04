@@ -158,13 +158,14 @@
 
 /* Form Elements */
 .product-form__input {
-  flex: 0 0 100%;
+  /* flex: 0 0 100%; */
   padding: 0;
-  margin: 0 0 1.2rem 0;
+  /* margin: 0 0 1.2rem 0; */
   /* max-width: 37rem; */
   /* min-width: fit-content; */
   border: none;
-  width: 175px;
+  width: 200px;
+  display: inline-block;
 }
 
 variant-radios,
@@ -278,9 +279,9 @@ fieldset.product-form__input .form__label {
   max-width: 25rem;
 }
 
-.product-form__submit {
+/* .product-form__submit {
   margin-bottom: 1rem;
-}
+} */
 
 .no-js .product-form__submit.button--secondary {
   --color-button: var(--color-base-accent-1);

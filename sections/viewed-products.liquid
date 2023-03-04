@@ -1,0 +1,26 @@
+<section>
+  <div class="container e--dsk jcc">
+    <div class="collections d-flex flex-column marg-b">
+      <h2 style="margin-bottom: 15px" class="txt-30">Recently Viewed Products</h2>
+
+      <div class="collections-cards">
+        {%- for product in section.settings.category_top_left.products -%}
+          {% render 'custom-card-product', card_product: product %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "collection",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "category_top_left",
+        "label": "Category Top Left"
+      }
+    ]
+  }
+{% endschema %}
