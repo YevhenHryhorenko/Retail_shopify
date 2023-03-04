@@ -524,6 +524,13 @@ img {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    transition: all .2s ease-in-out;
+}
+
+@media screen and (min-width: 992px) {
+    .header-icon:hover {
+        filter: opacity(0.5);
+    }
 }
 
 .header-nav {
@@ -1092,6 +1099,11 @@ img {
 
 .collections-card-img {
     margin: 12px 0 16px;
+    transition: all .3s ease-in-out;
+}
+
+.collections-card-img:hover {
+    scale: 1.05;
 }
 
 .collections-card-price {
@@ -1305,7 +1317,7 @@ footer {
     .footer-nav {
         padding: 0;
         flex-direction: row;
-        gap: 100px;
+        gap: 80px;
         border: none;
     }
 }
@@ -1328,9 +1340,8 @@ footer {
     line-height: 150%;
     text-transform: capitalize;
     color: #ffffff;
-    background-image: url(https://cdn.shopify.com/s/files/1/0726/7631/1323/files/arrow.svg?v=1677694745);
-    background-repeat: no-repeat;
-    background-position: center right;
+    width: 100%;
+    text-align: left;
 }
 
 @media screen and (min-width: 992px) {
@@ -1344,6 +1355,7 @@ footer {
     .footer-nav-links {
         display: flex;
         flex-direction: column;
+        gap: 5px;
     }
 }
 
@@ -1374,6 +1386,10 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+
+.footer-links a:hover {
+    filter: opacity(0.8);
 }
 
 @media screen and (min-width: 992px) {
@@ -1627,6 +1643,11 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 11px;
+    transition: all .2s ease-in-out;
+}
+
+.filters-btn-f:hover {
+    filter: opacity(0.5);
 }
 
 .filters-btn-f span {
@@ -1645,6 +1666,11 @@ footer {
     display: flex;
     align-items: center;
     gap: 3px;
+    transition: all .2s ease-in-out;
+}
+
+.filters-btn-s:hover {
+    filter: opacity(0.5);
 }
 
 .filters-btn-s span {
@@ -1662,6 +1688,11 @@ footer {
 @media screen and (min-width: 768px) {
     .filters-search {
         margin-right: 21px;
+        transition: all .2s ease-in-out;
+    }
+
+    .filters-search:hover {
+        filter: opacity(0.5);
     }
 }
 
@@ -1669,6 +1700,11 @@ footer {
     display: flex;
     align-items: center;
     gap: 12px;
+}
+
+.filters-lines button:hover {
+    filter: opacity(0.5);
+    transition: all .2s ease-in-out;
 }
 
 .filters-showing {
@@ -1785,10 +1821,11 @@ footer {
 }
 
 .breadcrumbs-list {
-    padding: 40px 0 32px;
+    padding: 40px 0;
     display: flex;
     gap: 20px;
     align-items: flex-start;
+    list-style-type: none;
 }
 
 .breadcrumbs-list img {
@@ -1807,8 +1844,7 @@ footer {
 }
 
 .breadcrumbs-list-item {
-    display: flex;
-    align-items: center;
+    position: relative;
     transition: all .3s ease-in-out;
 }
 
@@ -1816,6 +1852,7 @@ footer {
     font-size: 20px;
     line-height: 30px;
     color: #ffffff;
+    margin-right: 25px;
 }
 
 @media screen and (max-width: 768px) {
@@ -1832,19 +1869,32 @@ footer {
     }
 }
 
-.breadcrumbs-list-item.active {
+.breadcrumbs-list-item.active a {
     padding-bottom: 6px;
     border-bottom: 3px solid #C4C4C4;
 }
 
 .breadcrumbs-list-item:hover {
-    position: relative;
     text-decoration: none;
+    transition: all .3s ease-in-out;
 }
 
-.breadcrumbs-list-item:hover {
+.breadcrumbs-list-item:hover a {
     padding-bottom: 6px;
     border-bottom: 3px solid #C4C4C4;
+}
+
+.breadcrumbs-list-item:hover::after {
+    margin-left: -3px;
+}
+
+.breadcrumbs-list-item:not(:last-child)::after {
+    content: url(https://cdn.shopify.com/s/files/1/0731/5197/1633/files/arrow.svg?v=1677878584);
+    display: inline-block;
+    transform: rotateZ(-90deg);
+    position: absolute;
+    top: 8px;
+    right: 0;
 }
 
 .sub-image {
@@ -2059,6 +2109,18 @@ footer {
 
 .ohidden {
     overflow: hidden;
+}
+
+@media screen and (min-width: 992px) {
+    .dsk-none {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .mob-none {
+        display: none;
+    }
 }
 
 .e--mob {
