@@ -1041,9 +1041,22 @@ img {
     color: rgba(17, 16, 16, 0.5);
 }
 
+@media screen and (min-width: 992px) {
+    .collections .h2 {
+        margin-bottom: 20px;
+    }
+
+    .collections {
+        gap: 16px;
+    }
+}
+
+.collections {
+    gap: 0;
+}
+
 .collections .h2 {
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .collections .txt {
@@ -1370,6 +1383,10 @@ footer {
 .footer-nav-link:hover,
 .footer-nav-link:active {
     color: #fff;
+}
+
+.footer-nav-li {
+    -webkit-tap-highlight-color: transparent;
 }
 
 .footer-nav-contact {
@@ -1893,8 +1910,14 @@ footer {
     display: inline-block;
     transform: rotateZ(-90deg);
     position: absolute;
-    top: 8px;
+    top: 3px;
     right: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .breadcrumbs-list-item:not(:last-child)::after {
+        top: 9px;
+    }
 }
 
 .sub-image {
