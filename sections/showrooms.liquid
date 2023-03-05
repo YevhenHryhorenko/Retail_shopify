@@ -13,38 +13,46 @@
         alt="Showrooms" />
     </picture>
 
-    <div
-      class="showrooms-info">
-      {% if title_length <= 27 %}
-        <h1
-          class="h2">{{ section.settings.showrooms_heading }}</h1>
-      {% else %}
-        {% render 'error', characters: 27 %}
-      {% endif %}
+    {% unless section.settings.showrooms_heading == blank and section.settings.showrooms_parag == blank and section.settings.showrooms_button == blank %}
+      <div
+        class="showrooms-info">
+        {%- unless section.settings.showrooms_heading == blank -%}
+          {% if title_length <= 27 %}
+            <h1
+              class="h2">{{ section.settings.showrooms_heading }}</h1>
+          {% else %}
+            {% render 'error', characters: 27 %}
+          {% endif %}
+        c
 
-      {% if parag_length <= 243 %}
-        <p
-          class="txt txt-20">
-          {{ section.settings.showrooms_parag }}
-        </p>
-      {% else %}
-        {% render 'error', characters: 243 %}
-      {% endif %}
+        {%- unless section.settings.showrooms_parag == blank -%}
+          {% if parag_length <= 243 %}
+            <p
+              class="txt txt-20">
+              {{ section.settings.showrooms_parag }}
+            </p>
+          {% else %}
+            {% render 'error', characters: 243 %}
+          {% endif %}
+        {%- endunless -%}
 
-      {% if button_length <= 46 %}
-        <a
-          class="button button-black"
-          href="
-          {%- unless section.settings.link_collections == blank -%}
-            {{- section.settings.link_collections -}}
-          {%- else -%}
-            #
-          {%- endunless -%}">
-          {{ section.settings.showrooms_button }}</a>
-      {% else %}
-        {% render 'error', characters: 46 %}
-      {% endif %}
-    </div>
+        {%- unless section.settings.showrooms_button == blank -%}
+          {% if button_length <= 46 %}
+            <a
+              class="button button-black"
+              href="
+              {%- unless section.settings.link_collections == blank -%}
+                {{- section.settings.link_collections -}}
+              {%- else -%}
+                #
+              {%- endunless -%}">
+              {{ section.settings.showrooms_button }}</a>
+          {% else %}
+            {% render 'error', characters: 46 %}
+          {% endif %}
+        {%- endunless -%}
+      </div>
+    {%- endunless -%}
   </div>
 </section>
 <div
@@ -59,7 +67,7 @@
 
 {% schema %}
   {
-    "name": "showrooms",
+    "name": "Showrooms",
     "settings": [
       {
         "type": "text",

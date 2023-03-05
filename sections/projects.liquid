@@ -3,17 +3,22 @@
     class="container">
     <div
       class=" d-flex flex-column gap-0 marg-b">
-      <div
-        class="projects">
-        
-        <h2
-          class="h2">{{ section.settings.projects_heading }}</h2>
-        <hr/>
-        <p
-          class="txt txt-15">
-          {{ section.settings.projects_parag }}
-        </p>
-      </div>
+      {% unless section.settings.projects_heading == blank and section.settings.projects_parag == blank %}
+        <div
+          class="projects">
+          {%- unless section.settings.projects_heading == blank -%}
+            <h2
+              class="h2">{{ section.settings.projects_heading }}</h2>
+          {%- endunless -%}
+          <hr/>
+          {%- unless section.settings.projects_heading == blank -%}
+            <p
+              class="txt txt-15">
+              {{ section.settings.projects_parag }}
+            </p>
+          {%- endunless -%}
+        </div>
+      {%- endunless -%}
 
       <div
         class="project-cards d-flex e--dsk">
@@ -21,7 +26,7 @@
           class="project-cards-item">
           <img
             src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/project1.jpg?v=1677694745"
-            alt="Kingdom Tower" />
+            alt="Kingdom Tower">
           <div
             class="title">
             <h3
@@ -173,41 +178,41 @@
           aria-atomic="true"></span>
       </div>
 
-      <a
-        class="button button-black button-big"
-        href="
-        {%- unless section.settings.link_collections == blank -%}
-          {{- section.settings.link_collections -}}
-        {%- else -%}
-          #
-        {%- endunless -%}">{{ section.settings.projects_button }}</a>
+      {%- unless section.settings.projects_button == blank -%}
+        <a
+          class="button button-black button-big"
+          href="
+          {%- unless section.settings.link_collections == blank -%}
+            {{- section.settings.link_collections -}}
+          {%- else -%}
+            #
+          {%- endunless -%}">
+          {{ section.settings.projects_button }}</a>
+      {%- endunless -%}
     </div>
   </div>
 </section>
 
 {% schema %}
   {
-    "name": "solutions",
+    "name": "Projects",
     "settings": [
       {
         "type": "text",
         "id": "projects_heading",
         "label": "Change text of heading",
         "default": "Projects"
-      },
-      {
+      }, {
         "type": "textarea",
         "id": "projects_parag",
         "label": "Change text of paragraph",
         "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
-      },
-      {
+      }, {
         "type": "text",
         "id": "projects_button",
         "label": "Change text of button",
         "default": "View all"
-      },
-      {
+      }, {
         "type": "url",
         "id": "link_collections",
         "label": "Change Link"

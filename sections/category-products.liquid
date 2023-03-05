@@ -1,12 +1,24 @@
-<section class="container marg-b">
-  <div class="products">
-    <h2 class="h2">{{ section.settings.category_products_heading }}</h2>
-    <hr/>
-    <p class="txt txt-15 products-parag">
-      {{ section.settings.category_products_parag }}
-    </p>
-  </div>
-  <div class="swiper mySwiper1 swiper-initialized swiper-horizontal swiper-css-mode e--mob">
+<section
+  class="container marg-b">
+  {% unless section.settings.category_products_heading == blank and section.settings.category_products_parag == blank %}
+    <div
+      class="products">
+      {%- unless section.settings.category_products_heading == blank -%}
+        <h2
+          class="h2">{{ section.settings.category_products_heading }}</h2>
+      {%- endunless -%}
+      <hr/>
+      {%- unless section.settings.category_products_parag == blank -%}
+        <p
+          class="txt txt-15 products-parag">
+          {{ section.settings.category_products_parag }}
+        </p>
+      {%- endunless -%}
+    </div>
+  {%- endunless -%}
+
+  <div
+    class="swiper mySwiper1 swiper-initialized swiper-horizontal swiper-css-mode e--mob">
     <div
       class="swiper-wrapper"
       id="swiper-wrapper-1432e667cd7711d0"
@@ -19,11 +31,14 @@
           <img
             class="swiper-picture"
             src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/mob-tiles.jpg?v=1677694745"
-            alt="Bathroom Tiles" />
+            alt="Bathroom Tiles">
         </picture>
-        <div class="description">
-          <h3 class="description-header">Bathroom Tiles</h3>
-          <p class="description-parag">
+        <div
+          class="description">
+          <h3
+            class="description-header">Bathroom Tiles</h3>
+          <p
+            class="description-parag">
             Ante mus blandit sapien sociosqu per consequat ad.
           </p>
         </div>
@@ -38,9 +53,12 @@
             src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/marble.jpg?v=1677694746"
             alt="Marble" />
         </picture>
-        <div class="description">
-          <h3 class="description-header">Marble</h3>
-          <p class="description-parag">
+        <div
+          class="description">
+          <h3
+            class="description-header">Marble</h3>
+          <p
+            class="description-parag">
             Ante mus blandit sapien sociosqu
           </p>
         </div>
@@ -55,9 +73,12 @@
             src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/flooring.jpg?v=1677694745"
             alt="Outdoor Flooring" />
         </picture>
-        <div class="description">
-          <h3 class="description-header">Outdoor Flooring</h3>
-          <p class="description-parag">
+        <div
+          class="description">
+          <h3
+            class="description-header">Outdoor Flooring</h3>
+          <p
+            class="description-parag">
             Ante mus blandit sapien sociosqu per consequat ad.
           </p>
         </div>
@@ -73,9 +94,12 @@
             src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/interior.jpg?v=1677694745"
             alt="Kitchen Interior" />
         </picture>
-        <div class="description">
-          <h3 class="description-header">Kitchen Interior</h3>
-          <p class="description-parag">
+        <div
+          class="description">
+          <h3
+            class="description-header">Kitchen Interior</h3>
+          <p
+            class="description-parag">
             Ante mus blandit sapien sociosqu per consequat ad.
           </p>
         </div>
@@ -97,11 +121,17 @@
       aria-label="Previous slide"
       aria-controls="swiper-wrapper-1432e667cd7711d0"
       aria-disabled="true"></div>
-    <div class="swiper-pagination1 swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal">
-      <span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span>
-      <span class="swiper-pagination-bullet"></span>
-      <span class="swiper-pagination-bullet"></span>
-      <span class="swiper-pagination-bullet"></span>
+    <div
+      class="swiper-pagination1 swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal">
+      <span
+        class="swiper-pagination-bullet swiper-pagination-bullet-active"
+        aria-current="true"></span>
+      <span
+        class="swiper-pagination-bullet"></span>
+      <span
+        class="swiper-pagination-bullet"></span>
+      <span
+        class="swiper-pagination-bullet"></span>
     </div>
     <span
       class="swiper-notification"
@@ -109,8 +139,10 @@
       aria-atomic="true"></span>
   </div>
 
-  <div class="d-flex fl-start jc-around stretch e--dsk">
-    <div class="flex-column">
+  <div
+    class="d-flex fl-start jc-around stretch e--dsk">
+    <div
+      class="flex-column">
       <picture>
         <img
           class="swiper-picture"
@@ -119,14 +151,18 @@
           width="388"
           height="350" />
       </picture>
-      <div class="description flex-column jcc">
-        <h3 class="description-header">Bathroom Tiles</h3>
-        <p class="description-parag">
+      <div
+        class="description flex-column jcc">
+        <h3
+          class="description-header">Bathroom Tiles</h3>
+        <p
+          class="description-parag">
           Ante mus blandit sapien sociosqu per consequat ad.
         </p>
       </div>
     </div>
-    <div class="flex-column">
+    <div
+      class="flex-column">
       <picture>
         <img
           class="swiper-picture"
@@ -135,13 +171,18 @@
           width="388"
           height="350" />
       </picture>
-      <div class="description flex-column jcc">
-        <h3 class="description-header">Marble</h3>
-        <p class="description-parag">Ante mus blandit sapien sociosqu</p>
+      <div
+        class="description flex-column jcc">
+        <h3
+          class="description-header">Marble</h3>
+        <p
+          class="description-parag">Ante mus blandit sapien sociosqu</p>
       </div>
     </div>
-    <div class="flex-column jc-between">
-      <div class="flex-column">
+    <div
+      class="flex-column jc-between">
+      <div
+        class="flex-column">
         <picture>
           <img
             class="swiper-picture"
@@ -150,15 +191,19 @@
             width="388"
             height="350" />
         </picture>
-        <div class="description flex-column jcc">
-          <h3 class="description-header">Outdoor Flooring</h3>
-          <p class="description-parag">
+        <div
+          class="description flex-column jcc">
+          <h3
+            class="description-header">Outdoor Flooring</h3>
+          <p
+            class="description-parag">
             Ante mus blandit sapien sociosqu per consequat ad.
           </p>
         </div>
       </div>
 
-      <div class="flex-column">
+      <div
+        class="flex-column">
         <picture>
           <img
             class="swiper-picture"
@@ -167,9 +212,12 @@
             width="388"
             height="350" />
         </picture>
-        <div class="description flex-column jcc">
-          <h3 class="description-header">Kitchen Interior</h3>
-          <p class="description-parag">
+        <div
+          class="description flex-column jcc">
+          <h3
+            class="description-header">Kitchen Interior</h3>
+          <p
+            class="description-parag">
             Ante mus blandit sapien sociosqu per consequat ad.
           </p>
         </div>
@@ -180,15 +228,14 @@
 
 {% schema %}
   {
-    "name": "category_products",
+    "name": "Category products",
     "settings": [
       {
         "type": "text",
         "id": "category_products_heading",
         "label": "Change text of heading",
         "default": "Products"
-      },
-      {
+      }, {
         "type": "textarea",
         "id": "category_products_parag",
         "label": "Change text of paragraph",

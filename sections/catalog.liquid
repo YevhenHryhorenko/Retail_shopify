@@ -1,15 +1,66 @@
-<section class="catalog-bg">
-  <div class="catalog-bg-eclipse">
-    <div class="container">
-      <div class="catalog">
-        <h1
-          class="catalog-head">Catalog</h1>
-        <p class="txt-20">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy
-          								text.
-        </p>
-      </div>
+{% assign title_length = section.settings.catalog_heading | size %}
+{% assign parag_length = section.settings.catalog_parag | size %}
+{% assign button_length = section.settings.catalog_button | size %}
+
+<section
+  class="catalog-bg">
+  <div
+    class="catalog-bg-eclipse">
+    <div
+      class="container">
+      {% unless section.settings.catalog_heading == blank and section.settings.catalog_parag == blank %}
+        <div
+          class="catalog">
+          {%- unless section.settings.catalog_heading == blank -%}
+            {% if title_length <= 27 %}
+              <h1
+                class="catalog-head">{{ section.settings.catalog_heading }}</h1>
+            {% else %}
+              {% render 'error', characters: 27 %}
+            {% endif %}
+          {%- endunless -%}
+          {%- unless section.settings.catalog_parag == blank -%}
+            {% if parag_length <= 243 %}
+              <p
+                class="txt-20">
+                {{ section.settings.catalog_parag }}
+              </p>
+            {% else %}
+              {% render 'error', characters: 243 %}
+            {% endif %}
+          {%- endunless -%}
+        </div>
+      {%- endunless -%}
     </div>
   </div>
 </section>
+
+{% style %}
+  .catalog-bg {
+    background-image: url('{{ section.settings.catalog_bg_img | img_url: '1920x'}}');
+  }
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "Hero section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "catalog_heading",
+        "label": "Change text of heading",
+        "default": "Catalog"
+      }, {
+        "type": "textarea",
+        "id": "catalog_parag",
+        "label": "Change text of paragraph",
+        "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
+      },
+      {
+        "type": "image_picker",
+        "id": "catalog_bg_img",
+        "label": "Change background image"
+      }
+    ]
+  }
+{% endschema %}

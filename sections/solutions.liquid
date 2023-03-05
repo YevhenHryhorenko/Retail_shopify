@@ -9,24 +9,30 @@
       class="df-64">
       <div
         class="d-flex solutions w-full fl-start">
-        <div
-          class="solutions-title">
-          {% if title_length <= 44 %}
-            <h2
-              class="h2">{{ section.settings.solutions_heading }}</h2>
-          {% else %}
-            {% render 'error', characters: 44 %}
-          {% endif %}
+        {% unless section.settings.solutions_heading == blank and section.settings.solutions_parag == blank %}
+          <div
+            class="solutions-title">
+            {%- unless section.settings.solutions_heading == blank -%}
+              {% if title_length <= 44 %}
+                <h2
+                  class="h2">{{ section.settings.solutions_heading }}</h2>
+              {% else %}
+                {% render 'error', characters: 44 %}
+              {% endif %}
+            {%- endunless -%}
 
-          {% if parag_length <= 244 %}
-            <p
-              class="txt txt-20">
-              {{ section.settings.solutions_parag }}
-            </p>
-          {% else %}
-            {% render 'error', characters: 244 %}
-          {% endif %}
-        </div>
+            {%- unless section.settings.solutions_parag == blank -%}
+              {% if parag_length <= 244 %}
+                <p
+                  class="txt txt-20">
+                  {{ section.settings.solutions_parag }}
+                </p>
+              {% else %}
+                {% render 'error', characters: 244 %}
+              {% endif %}
+            {%- endunless -%}
+          </div>
+        {%- endunless -%}
         <div
           class="d-flex solutions-images e--dsk">
           <picture><img
@@ -37,22 +43,25 @@
               alt="Room" /></picture>
           <picture><img
               src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/room3.jpg?v=1677694745"
-              alt="Room" /></picture>
+              alt="Room"></picture>
         </div>
-        {% if button_length <= 22 %}
-          <a
-            class="button button-black e--dsk"
-            href="
-            {%- unless section.settings.link_collections == blank -%}
-              {{- section.settings.link_collections -}}
-            {%- else -%}
-              #
-            {%- endunless -%}">
-            {{ section.settings.solutions_button }}
-          </a>
-        {% else %}
-          {% render 'error', characters: 22 %}
-        {% endif %}
+
+        {%- unless section.settings.solutions_button == blank -%}
+          {% if button_length <= 22 %}
+            <a
+              class="button button-black e--dsk"
+              href="
+              {%- unless section.settings.link_collections == blank -%}
+                {{- section.settings.link_collections -}}
+              {%- else -%}
+                #
+              {%- endunless -%}">
+              {{ section.settings.solutions_button }}
+            </a>
+          {% else %}
+            {% render 'error', characters: 22 %}
+          {% endif %}
+        {%- endunless -%}
       </div>
       <div
         class="shrink-0 video-block e--dsk">
@@ -138,7 +147,7 @@
 
 {% schema %}
   {
-    "name": "solutions",
+    "name": "Solutions",
     "settings": [
       {
         "type": "text",

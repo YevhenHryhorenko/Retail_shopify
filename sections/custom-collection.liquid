@@ -3,15 +3,21 @@
     class="container">
     <div
       class="collections d-flex flex-column marg-b">
-      {% if page.title != "Catalog" %}
-        <h2
-          class="h2">{{ section.settings.collection_heading }}</h2>
-        <hr/>
-        <p
-          class="txt txt-15">
-          {{ section.settings.collection_parag }}
-        </p>
-      {% endif %}
+      {% unless section.settings.collection_heading == blank and section.settings.collection_parag == blank %}
+        {% if page.title != "Catalog" %}
+          {%- unless section.settings.collection_heading == blank -%}
+            <h2
+              class="h2">{{ section.settings.collection_heading }}</h2>
+          {%- endunless -%}
+          <hr/>
+          {%- unless section.settings.collection_parag == blank -%}
+            <p
+              class="txt txt-15">
+              {{ section.settings.collection_parag }}
+            </p>
+          {%- endunless -%}
+        {% endif %}
+      {%- endunless -%}
 
       <div
         class="collections-cards">
@@ -20,21 +26,24 @@
         {% endfor %}
       </div>
 
-      <a
-        class="button button-black"
-        href="
-        {%- unless section.settings.link_collections == blank -%}
-          {{- section.settings.link_collections -}}
-        {%- else -%}
-          #
-        {%- endunless -%}">{{ section.settings.collection_button }}</a>
+      {%- unless section.settings.collection_button == blank -%}
+        <a
+          class="button button-black"
+          href="
+          {%- unless section.settings.link_collections == blank -%}
+            {{- section.settings.link_collections -}}
+          {%- else -%}
+            #
+          {%- endunless -%}">
+          {{ section.settings.collection_button }}</a>
+      {%- endunless -%}
     </div>
   </div>
 </section>
 
 {% schema %}
   {
-    "name": "collection",
+    "name": "Collection",
     "settings": [
       {
         "type": "collection",
@@ -58,8 +67,7 @@
         "id": "collection_button",
         "label": "Change text of button",
         "default": "more products"
-      },
-      {
+      }, {
         "type": "url",
         "id": "link_collections",
         "label": "Change Link"

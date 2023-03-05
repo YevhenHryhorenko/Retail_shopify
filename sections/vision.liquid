@@ -4,7 +4,7 @@
 
 <section>
   <div class="container relative">
-    {%- unless section.settings.vision_heading == blank or section.settings.vision_heading == blank or section.settings.vision_button == blank -%}
+    {%- unless section.settings.vision_heading == blank and section.settings.vision_heading == blank and section.settings.vision_button == blank -%}
       <div class="vision">
         {%- unless section.settings.vision_heading == blank -%}
           {% if title_length <= 27 %}
@@ -69,7 +69,7 @@
 
 {% schema %}
   {
-    "name": "vision",
+    "name": "Vision",
     "settings": [
       {
         "type": "text",

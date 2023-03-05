@@ -4,7 +4,7 @@
 
 <section class="hero-bg">
   <div style="height: 526px" class="container relative d-flex jcc">
-    {% unless section.settings.image_banner_heading == blank or section.settings.image_banner_parag == blank or section.settings.image_banner_button == blank %}
+    {% unless section.settings.image_banner_heading == blank and section.settings.image_banner_parag == blank and section.settings.image_banner_button == blank %}
       <div class="hero">
         {%- unless section.settings.image_banner_heading == blank -%}
           {% if title_length <= 27 %}
@@ -72,7 +72,7 @@
 
 {% schema %}
   {
-    "name": "image-banner",
+    "name": "Image banner",
     "settings": [
       {
         "type": "text",

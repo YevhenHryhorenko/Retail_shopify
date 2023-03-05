@@ -3,6 +3,7 @@
     "catalog": {
       "type": "catalog",
       "settings": {
+        "catalog_bg_img": "shopify:\/\/shop_images\/catalog-bg.jpg"
       }
     },
     "rooms": {
