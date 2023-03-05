@@ -11,7 +11,7 @@
 
       <img
         class="header-logo"
-        src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/logo.svg?v=1677694745"
+        src="{{ section.settings.header_logo | img_url }}"
         alt="Logo"
         width="101"
         height="36" />
@@ -115,6 +115,11 @@
         "type": "link_list",
         "id": "main_menu",
         "label": "Add your menu-link"
+      },
+      {
+        "type":"image_picker",
+        "id": "header_logo",
+        "label": "Change your logo"
       }
     ]
   }

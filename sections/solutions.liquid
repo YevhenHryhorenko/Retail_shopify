@@ -1,38 +1,79 @@
+{% assign title_length = section.settings.solutions_heading | size %}
+{% assign parag_length = section.settings.solutions_parag | size %}
+{% assign button_length = section.settings.solutions_button | size %}
+
 <section>
-  <div class="container marg-b">
-    <div class="df-64">
-      <div class="d-flex solutions w-full fl-start">
-        <div class="solutions-title">
-          <h2 class="h2">Creative Solutions by Professional Designers</h2>
-          <p class="txt txt-20">
-            Penatibus sem vitae mollis luctus mi tellus. Maximus eu eleifend
-            aptent dapibus metus maecenas consequat. Elementum interdum a
-                      								semper. Netus nullam eros nisi volutpat nibh ex ultricies.
-                      								Pharetra sagittis sit aliquet at. Magna nam platea justo.
-          </p>
+  <div
+    class="container marg-b">
+    <div
+      class="df-64">
+      <div
+        class="d-flex solutions w-full fl-start">
+        <div
+          class="solutions-title">
+          {% if title_length <= 44 %}
+            <h2
+              class="h2">{{ section.settings.solutions_heading }}</h2>
+          {% else %}
+            {% render 'error', characters: 44 %}
+          {% endif %}
+
+          {% if parag_length <= 244 %}
+            <p
+              class="txt txt-20">
+              {{ section.settings.solutions_parag }}
+            </p>
+          {% else %}
+            {% render 'error', characters: 244 %}
+          {% endif %}
         </div>
-        <div class="d-flex solutions-images e--dsk">
-          <picture><img src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/room1.jpg?v=1677694745" alt="Room" /></picture>
-          <picture><img src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/room2.jpg?v=1677694745" alt="Room" /></picture>
-          <picture><img src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/room3.jpg?v=1677694745" alt="Room" /></picture>
+        <div
+          class="d-flex solutions-images e--dsk">
+          <picture><img
+              src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/room1.jpg?v=1677694745"
+              alt="Room" /></picture>
+          <picture><img
+              src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/room2.jpg?v=1677694745"
+              alt="Room" /></picture>
+          <picture><img
+              src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/room3.jpg?v=1677694745"
+              alt="Room" /></picture>
         </div>
-        <button class="button button-black e--dsk" href="#">
-          Read more
-        </button>
+        {% if button_length <= 22 %}
+          <a
+            class="button button-black e--dsk"
+            href="
+            {%- unless section.settings.link_collections == blank -%}
+              {{- section.settings.link_collections -}}
+            {%- else -%}
+              #
+            {%- endunless -%}">
+            {{ section.settings.solutions_button }}
+          </a>
+        {% else %}
+          {% render 'error', characters: 22 %}
+        {% endif %}
       </div>
-      <div class="shrink-0 video-block e--dsk">
-        <picture><img src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/video.jpg?v=1677694745" alt="Video" /></picture>
-        <div class="video-block-content">
+      <div
+        class="shrink-0 video-block e--dsk">
+        <picture><img
+            src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/video.jpg?v=1677694745"
+            alt="Video" /></picture>
+        <div
+          class="video-block-content">
 
           <div>
-            <p class="txt-18">Watch</p>
-            <p class="txt-18 black">Video tour</p>
+            <p
+              class="txt-18">Watch</p>
+            <p
+              class="txt-18 black">Video tour</p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="swiper simple mySwiper2 swiper-initialized swiper-horizontal swiper-css-mode e--mob">
+    <div
+      class="swiper simple mySwiper2 swiper-initialized swiper-horizontal swiper-css-mode e--mob">
       <div
         class="swiper-wrapper"
         id="swiper-wrapper-1432e667cd7711d0"
@@ -94,3 +135,31 @@
     </div>
   </div>
 </section>
+
+{% schema %}
+  {
+    "name": "solutions",
+    "settings": [
+      {
+        "type": "text",
+        "id": "solutions_heading",
+        "label": "Change text of heading",
+        "default": "Creative Solutions by Professional Designers"
+      }, {
+        "type": "textarea",
+        "id": "solutions_parag",
+        "label": "Change text of paragraph",
+        "default": "Penatibus sem vitae mollis luctus mi tellus. Maximus eu eleifend aptent dapibus metus maecenas consequat. Elementum interdum a semper. Netus nullam eros nisi volutpat nibh ex ultricies. Pharetra sagittis sit aliquet at. Magna nam platea justo."
+      }, {
+        "type": "text",
+        "id": "solutions_button",
+        "label": "Change text of button",
+        "default": "Read more"
+      }, {
+        "type": "url",
+        "id": "link_collections",
+        "label": "Change Link"
+      }
+    ]
+  }
+{% endschema %}

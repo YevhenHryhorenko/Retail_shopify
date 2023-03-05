@@ -497,16 +497,15 @@ img {
 }
 
 .header-logo {
-    width: 101px;
-    height: 36px;
+    max-width: 101px;
+    max-height: 36px;
 }
 
 @media screen and (min-width: 992px) {
     .header-logo {
-        width: 167px;
-        height: 57px;
-        flex-basis: 100%;
-        order: -1;
+        max-width: 167px;
+        max-height: 57px;
+        margin: 0 auto;
     }
 }
 
@@ -566,7 +565,6 @@ img {
 }
 
 .hero-bg {
-    background-image: url(https://cdn.shopify.com/s/files/1/0726/7631/1323/files/mob-main-bg.jpg?v=1677694745);
     background-repeat: no-repeat;
     background-size: cover;
     height: 434px;
@@ -574,7 +572,6 @@ img {
 
 @media screen and (min-width: 429px) {
     .hero-bg {
-        background-image: url(https://cdn.shopify.com/s/files/1/0726/7631/1323/files/main-bg.jpg?v=1677694746);
         height: 526px;
     }
 }
@@ -586,7 +583,6 @@ img {
 }
 
 .hero {
-    background-color: #666a6f;
     padding: 30px 20px;
     margin-top: -30px;
     max-width: 716px;
@@ -600,7 +596,6 @@ img {
 
 @media screen and (min-width: 992px) {
     .hero {
-        background: rgba(0, 0, 0, 0.36);
         backdrop-filter: blur(17px);
         padding: 50px 36px 52px 43px;
         margin: 0;
@@ -854,7 +849,6 @@ img {
 }
 
 .vision-bg {
-    background-image: url(https://cdn.shopify.com/s/files/1/0726/7631/1323/files/vision.jpg?v=1677694746);
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: center;
@@ -872,7 +866,6 @@ img {
 
 .vision {
     padding: 22px 20px 35px;
-    background-color: #f7f7f7;
     max-width: 708px;
     margin: 0 auto -125px;
     z-index: 1;
@@ -1191,7 +1184,6 @@ img {
 }
 
 .showrooms-bg {
-    background-image: url(https://cdn.shopify.com/s/files/1/0726/7631/1323/files/showrooms.jpg?v=1677694745);
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: center;
@@ -2144,6 +2136,10 @@ footer {
     .mob-none {
         display: none;
     }
+}
+
+.error {
+    color: #ff0000;
 }
 
 .e--mob {

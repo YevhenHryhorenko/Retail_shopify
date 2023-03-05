@@ -1,13 +1,115 @@
+{% assign title_length = section.settings.image_banner_heading | size %}
+{% assign parag_length = section.settings.image_banner_parag | size %}
+{% assign button_length = section.settings.image_banner_button | size %}
+
 <section class="hero-bg">
   <div style="height: 526px" class="container relative d-flex jcc">
-    <div class="hero">
-      <h1 class="hero-head">New Generation Ceramic Tile</h1>
-      <p class="hero-parag">
-        Penatibus sem vitae mollis luctus mi tellus. Maximus eu eleifend
-        aptent dapibus metus maecenas consequat. Elementum interdum a semper. Netus nullam eros nisi volutpat nibh ex ultricies. Pharetra
-                sagittis sit aliquet at. Magna nam platea justo.
-      </p>
-      <a class="button button-white" href="#">Learn more</a>
-    </div>
+    {% unless section.settings.image_banner_heading == blank or section.settings.image_banner_parag == blank or section.settings.image_banner_button == blank %}
+      <div class="hero">
+        {%- unless section.settings.image_banner_heading == blank -%}
+          {% if title_length <= 27 %}
+            <h1 class="hero-head">{{ section.settings.image_banner_heading }}</h1>
+          {% else %}
+            {% render 'error', characters: 27 %}
+          {% endif %}
+        {%- endunless -%}
+
+        {%- unless section.settings.image_banner_parag == blank -%}
+          {% if parag_length <= 243 %}
+            <p class="hero-parag">
+              {{ section.settings.image_banner_parag }}
+            </p>
+          {% else %}
+            {% render 'error', characters: 243 %}
+          {% endif %}
+        {%- endunless -%}
+
+        {%- unless section.settings.image_banner_button == blank -%}
+          {% if button_length <= 46 %}
+            <a
+              class="button button-white"
+              href="
+              {%- unless section.settings.link_collections == blank -%}
+                {{- section.settings.link_collections -}}
+              {%- else -%}
+                #
+              {%- endunless -%}">
+              {{ section.settings.image_banner_button }}</a>
+          {% else %}
+            {% render 'error', characters: 46 %}
+          {% endif %}
+        {%- endunless -%}
+      </div>
+    {% endunless %}
+
   </div>
 </section>
+
+{% style %}
+
+  .hero-bg {
+    background-image: url('{{ section.settings.hero_mob_bg_img | img_url: '428x437x'}}');
+  }
+
+  @media screen and (min-width: 429px) {
+    .hero-bg {
+      background-image: url('{{ section.settings.hero_bg_img | img_url: '1920x'}}');
+    }
+  }
+
+  .hero {
+    background-color: {% render 'color_to_rgba', color: section.settings.image_banner_bg-color, alpha: '0.36' %}
+    ;
+  }
+
+  @media screen and (max-width: 992px) {
+    .hero {
+      background-color: {{ section.settings.image_banner_bg-color }}
+      ;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "image-banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "image_banner_heading",
+        "label": "Change text of heading",
+        "default": "New Generation Ceramic Tile"
+      },
+      {
+        "type": "color",
+        "id": "image_banner_bg-color",
+        "label": "Change background color",
+        "default": "#666a6f"
+      },
+      {
+        "type": "textarea",
+        "id": "image_banner_parag",
+        "label": "Change text of paragraph",
+        "default": "Penatibus sem vitae mollis luctus mi tellus. Maximus eu eleifend aptent dapibus metus maecenas consequat. Elementum interdum a semper. Netus nullam eros nisi volutpat nibh ex ultricies. Pharetra sagittis sit aliquet at. Magna nam platea justo."
+      },
+      {
+        "type": "text",
+        "id": "image_banner_button",
+        "label": "Change text of button",
+        "default": "Learn more"
+      }, {
+        "type": "image_picker",
+        "id": "hero_bg_img",
+        "label": "Change background image for desktop version of site"
+      }, {
+        "type": "image_picker",
+        "id": "hero_mob_bg_img",
+        "label": "Change background image for mobile version of site"
+      }, {
+        "type": "url",
+        "id": "link_collections",
+        "label": "Change Link"
+      }
+    ]
+  }
+{% endschema %}

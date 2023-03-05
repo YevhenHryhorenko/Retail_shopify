@@ -1,17 +1,97 @@
-<section class="container">
-  <div class="showrooms">
-    <picture class="showrooms-img">
-      <img src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/showrooms.jpg?v=1677694745" alt="Showrooms" />
+{% assign title_length = section.settings.showrooms_heading | size %}
+{% assign parag_length = section.settings.showrooms_parag | size %}
+{% assign button_length = section.settings.showrooms_button | size %}
+
+<section
+  class="container">
+  <div
+    class="showrooms">
+    <picture
+      class="showrooms-img">
+      <img
+        src="{{ section.settings.showrooms_img | img_url: '1200x' }}"
+        alt="Showrooms" />
     </picture>
 
-    <div class="showrooms-info">
-      <h1 class="h2">Our Showrooms</h1>
-      <p class="txt txt-20">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text.
-      </p>
-      <a class="button button-black" href="#">Learn more</a>
+    <div
+      class="showrooms-info">
+      {% if title_length <= 27 %}
+        <h1
+          class="h2">{{ section.settings.showrooms_heading }}</h1>
+      {% else %}
+        {% render 'error', characters: 27 %}
+      {% endif %}
+
+      {% if parag_length <= 243 %}
+        <p
+          class="txt txt-20">
+          {{ section.settings.showrooms_parag }}
+        </p>
+      {% else %}
+        {% render 'error', characters: 243 %}
+      {% endif %}
+
+      {% if button_length <= 46 %}
+        <a
+          class="button button-black"
+          href="
+          {%- unless section.settings.link_collections == blank -%}
+            {{- section.settings.link_collections -}}
+          {%- else -%}
+            #
+          {%- endunless -%}">
+          {{ section.settings.showrooms_button }}</a>
+      {% else %}
+        {% render 'error', characters: 46 %}
+      {% endif %}
     </div>
   </div>
 </section>
-<div style="display: block;" class="showrooms-bg"></div>
+<div
+  style="display: block;"
+  class="showrooms-bg"></div>
+
+{% style %}
+  .showrooms-bg {
+    background-image: url('{{ section.settings.showrooms_bg_img | img_url: '1200x' }}');
+  }
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "showrooms",
+    "settings": [
+      {
+        "type": "text",
+        "id": "showrooms_heading",
+        "label": "Change text of heading",
+        "default": "Our Showrooms"
+      },
+      {
+        "type": "textarea",
+        "id": "showrooms_parag",
+        "label": "Change text of paragraph",
+        "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
+      },
+      {
+        "type": "text",
+        "id": "showrooms_button",
+        "label": "Change text of button",
+        "default": "Learn more"
+      },
+      {
+        "type": "image_picker",
+        "id": "showrooms_img",
+        "label": "Change background image for desktop version of site"
+      }, {
+        "type": "image_picker",
+        "id": "showrooms_bg_img",
+        "label": "Change background image for mobile version of site"
+      }, {
+        "type": "url",
+        "id": "link_collections",
+        "label": "Change Link"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,19 +1,114 @@
+{% assign title_length = section.settings.vision_heading | size %}
+{% assign parag_length = section.settings.vision_parag | size %}
+{% assign button_length = section.settings.vision_button | size %}
+
 <section>
   <div class="container relative">
-    <div class="vision">
-      <h1 class="h2">Vision</h1>
-      <p class="txt txt-20">
-        Penatibus sem vitae mollis luctus mi tellus. Maximus eu eleifend
-        aptent dapibus metus maecenas consequat. Elementum interdum a
-                    semper. Netus nullam eros nisi volutpat nibh ex ultricies. Pharetra
-                    sagittis sit aliquet at. Magna nam platea justo.
-      </p>
-      <a class="button button-black" href="#">Learn more</a>
-    </div>
+    {%- unless section.settings.vision_heading == blank or section.settings.vision_heading == blank or section.settings.vision_button == blank -%}
+      <div class="vision">
+        {%- unless section.settings.vision_heading == blank -%}
+          {% if title_length <= 27 %}
+            <h1 class="h2">{{ section.settings.vision_heading }}</h1>
+          {% else %}
+            {% render 'error', characters: 27 %}
+          {% endif %}
+        {%- endunless -%}
+
+        {%- unless section.settings.vision_heading == blank -%}
+          {% if parag_length <= 243 %}
+            <p class="txt txt-20">
+              {{ section.settings.vision_parag }}
+            </p>
+          {% else %}
+            {% render 'error', characters: 243 %}
+          {% endif %}
+        {%- endunless -%}
+
+        {%- unless section.settings.vision_button == blank -%}
+          {% if button_length <= 46 %}
+            <a
+              class="button button-black"
+              href="
+              {%- unless section.settings.link_collections == blank -%}
+                {{- section.settings.link_collections -}}
+              {%- else -%}
+                #
+              {%- endunless -%}">
+              {{ section.settings.vision_button }}</a>
+          {% else %}
+            {% render 'error', characters: 46 %}
+          {% endif %}
+        {%- endunless -%}
+      </div>
+    {%- endunless -%}
 
     <picture class="vision-img e--dsk">
-      <img src="https://cdn.shopify.com/s/files/1/0726/7631/1323/files/vision.jpg?v=1677694746" alt="Vision" />
+      <img src="{{ section.settings.vision_bg_img | img_url: '1200x' }}" alt="Vision" />
     </picture>
   </div>
 </section>
 <div class="vision-bg" style="display: block"></div>
+
+{% style %}
+
+  .vision-bg {
+    background-image: url('{{ section.settings.vision_bg_img | img_url: '1920x'}}');
+  }
+
+  @media screen and (min-width: 992px) {
+    .vision-bg {
+      background-image: url('{{ section.settings.vision_bg | img_url: '1920x'}}');
+    }
+  }
+
+  .vision {
+    background-color: {{ section.settings.vision_bg_color }}
+    ;
+  }
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "vision",
+    "settings": [
+      {
+        "type": "text",
+        "id": "vision_heading",
+        "label": "Change text of heading",
+        "default": "Vision"
+      },
+      {
+        "type": "color",
+        "id": "vision_bg_color",
+        "label": "Change background color"
+      },
+      {
+        "type": "textarea",
+        "id": "vision_parag",
+        "label": "Change text of paragraph",
+        "default": "Penatibus sem vitae mollis luctus mi tellus. Maximus eu eleifend aptent dapibus metus maecenas consequat. Elementum interdum a semper. Netus nullam eros nisi volutpat nibh ex ultricies. Pharetra sagittis sit aliquet at. Magna nam platea justo."
+      },
+      {
+        "type": "text",
+        "id": "vision_button",
+        "label": "Change text of button",
+        "default": "Learn more"
+      }, 
+      {
+        "type": "image_picker",
+        "id": "vision_bg_img",
+        "label": "Change background image for desktop version of site"
+      }, 
+      {
+        "type": "image_picker",
+        "id": "vision_mob_bg_img",
+        "label": "Change background image for mobile version of site"
+      }, 
+      {
+        "type": "url",
+        "id": "link_collections",
+        "label": "Change Link"
+      }
+    ]
+  }
+{% endschema %}

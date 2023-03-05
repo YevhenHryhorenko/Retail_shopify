@@ -3,6 +3,9 @@
     "image_banner": {
       "type": "image-banner",
       "settings": {
+        "hero_bg_img": "shopify:\/\/shop_images\/main-bg.jpg",
+        "hero_mob_bg_img": "shopify:\/\/shop_images\/mob-main-bg.jpg",
+        "link_collections": "/collections"
       }
     },
     "category_products": {
@@ -13,27 +16,37 @@
     "vision": {
       "type": "vision",
       "settings": {
+        "vision_bg_img": "shopify:\/\/shop_images\/vision.jpg",
+        "vision_mob_bg_img": "shopify:\/\/shop_images\/vision.jpg",
+        "vision_bg_color": "#f7f7f7",
+        "link_collections": "/collections"
       }
     },
     "custom-collection": {
       "type": "custom-collection",
       "settings": {
-        "category_top_left": "all"
+        "category_top_left": "all",
+        "link_collections": "/collections/all"
       }
     },
     "solutions": {
       "type": "solutions",
       "settings": {
+        "link_collections": "/collections"
       }
     },
     "projects": {
       "type": "projects",
       "settings": {
+        "link_collections": "/collections"
       }
     },
     "showrooms": {
       "type": "showrooms",
       "settings": {
+        "link_collections": "/collections",
+        "showrooms_img": "shopify:\/\/shop_images\/showrooms.jpg",
+        "showrooms_bg_img": "shopify:\/\/shop_images\/showrooms.jpg"
       }
     }
   },
@@ -41,9 +54,9 @@
     "image_banner",
     "category_products",
     "vision",
-    "custom-collection",
     "solutions",
     "projects",
+    "custom-collection",
     "showrooms"
   ]
 }
