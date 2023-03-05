@@ -5,7 +5,8 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "footer_menu": "footer-menu"
+        "products_menu": "products",
+        "services_menu": "services"
       }
     }
   },

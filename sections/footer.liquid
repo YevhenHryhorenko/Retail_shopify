@@ -23,7 +23,7 @@
                 >
               </button>
               <ul class="footer-nav-links-mob footer-nav-links">
-                {% for link in section.settings.footer_menu.links limit: 4 %}
+                {% for link in section.settings.products_menu.links %}
                   <li>
                     <a class="footer-nav-link" href="{{ link.url }}">{{ link.title }}</a>
                   </li>
@@ -45,7 +45,7 @@
                 >
               </button>
               <ul class="footer-nav-links footer-nav-links-mob">
-                {% for link in section.settings.footer_menu.links offset: 4 %}
+                {% for link in section.settings.services_menu.links %}
                   <li>
                     <a class="footer-nav-link" href="{{ link.url }}">{{ link.title }}</a>
                   </li>
@@ -78,7 +78,7 @@
           <li>
             <p class="footer-nav-head">Products</p>
             <ul class="footer-nav-links">
-              {% for link in section.settings.footer_menu.links limit: 4 %}
+              {% for link in section.settings.products_menu.links %}
                 <li>
                   <a class="footer-nav-link" href="{{ link.url }}">{{ link.title }}</a>
                 </li>
@@ -88,7 +88,7 @@
           <li>
             <p class="footer-nav-head">Services</p>
             <ul class="e--dsk footer-nav-links">
-              {% for link in section.settings.footer_menu.links offset: 4 %}
+              {% for link in section.settings.services_menu.links %}
                 <li>
                   <a class="footer-nav-link" href="{{ link.url }}">{{ link.title }}</a>
                 </li>
@@ -199,7 +199,12 @@
     "settings": [
       {
         "type": "link_list",
-        "id": "footer_menu",
+        "id": "products_menu",
+        "label": "Add your menu-link"
+      },
+      {
+        "type": "link_list",
+        "id": "services_menu",
         "label": "Add your menu-link"
       }
     ]
