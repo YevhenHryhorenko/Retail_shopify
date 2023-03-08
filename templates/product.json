@@ -13,13 +13,14 @@
     "related-products": {
       "type": "related-products",
       "settings": {
-        "category_top_left": "related"
+        "category_top_left": "related-products"
       }
     },
     "viewed-products": {
       "type": "viewed-products",
       "settings": {
-        "category_top_left": "viewed"
+        "category_top_left": "viewed-products"
+        
       }
     }
   },

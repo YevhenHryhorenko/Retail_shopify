@@ -1,20 +1,20 @@
 <section>
   <div class="{% unless section.settings.checkbox_section_stretch %} section-container {% endunless %}">
-    <div class="display-flex ai-normal wrap">
-      <div class="description--stretch">
-        <div class="tal {% if section.settings.checkbox_section_stretch %} description__best_way {% endif %}">
-          <h3 class="h3 marg-b-25">The best way to restore beauty, youth, health and strength</h3>
-          <p class="txt marg-b-25">
+    <div class="d-flex--default wrap {% if section.settings.checkbox_section_exchange %}d-flex--revert{% endif %}">
+      <div class="description--default {% if section.settings.checkbox_section_stretch %}description--stretch{% endif %}">
+        <div class="tal description__best_way {% if section.settings.checkbox_section_exchange %}description__best_way--exchange{% endif %}">
+          <h3 class="h3 marg-b-25 {% if section.settings.checkbox_section_stretch %}color-white-stretch{% endif %}">The best way to restore beauty, youth, health and strength</h3>
+          <p class="text marg-b-25 {% if section.settings.checkbox_section_stretch %}color-white-stretch{% endif %}">
             Dermacolla - the premium brand in German vitamins. They are aimed at preserving and restoring natural
             beauty, moisturizing the skin, accelerating hair growth and strengthening nails, delivering vital moisture
-                        to the tissues, and aiding the process that leads to the reduction of cellulite.
+                                    to the tissues, and aiding the process that leads to the reduction of cellulite.
           </p>
-          <a class="btn--small" href="">About dermacolla</a>
+          <a class="btn--small {% if section.settings.checkbox_section_stretch %}color-white-stretch{% endif %}" href="">About dermacolla</a>
         </div>
       </div>
-      <div class="video-wrap--default {% if section.settings.checkbox_section_stretch %} video-wrap {% endif %}">
+      <div class="video-wrap--default">
         <video
-          class="{% if section.settings.checkbox_section_stretch %} video {% endif %}"
+          class="video--default {% if section.settings.checkbox_section_stretch %}video--stretch{% endif %}"
           loop=""
           autoplay=""
           muted=""
@@ -34,6 +34,11 @@
         "type": "checkbox",
         "id": "checkbox_section_stretch",
         "label": "Stretch the section to full screen"
+      },
+      {
+        "type": "checkbox",
+        "id": "checkbox_section_exchange",
+        "label": "Swap the block of text and picture"
       }
     ]
   }
