@@ -2,33 +2,25 @@
 {% assign parag_length = section.settings.showrooms_parag | size %}
 {% assign button_length = section.settings.showrooms_button | size %}
 
-<section
-  class="container">
-  <div
-    class="showrooms">
-    <picture
-      class="showrooms-img">
-      <img
-        src="{{ section.settings.showrooms_img | img_url: '1200x' }}"
-        alt="Showrooms" />
+<section class="container">
+  <div class="showrooms">
+    <picture class="showrooms-img">
+      <img src="{{ section.settings.showrooms_img | img_url: '1200x' }}" alt="Showrooms" />
     </picture>
 
     {% unless section.settings.showrooms_heading == blank and section.settings.showrooms_parag == blank and section.settings.showrooms_button == blank %}
-      <div
-        class="showrooms-info">
+      <div class="showrooms-info">
         {%- unless section.settings.showrooms_heading == blank -%}
           {% if title_length <= 27 %}
-            <h1
-              class="h2">{{ section.settings.showrooms_heading }}</h1>
+            <h1 class="h2">{{ section.settings.showrooms_heading }}</h1>
           {% else %}
             {% render 'error', characters: 27 %}
           {% endif %}
-        c
+        {% endunless %}
 
         {%- unless section.settings.showrooms_parag == blank -%}
           {% if parag_length <= 243 %}
-            <p
-              class="txt txt-20">
+            <p class="txt txt-20">
               {{ section.settings.showrooms_parag }}
             </p>
           {% else %}
@@ -55,9 +47,7 @@
     {%- endunless -%}
   </div>
 </section>
-<div
-  style="display: block;"
-  class="showrooms-bg"></div>
+<div style="display: block;" class="showrooms-bg"></div>
 
 {% style %}
   .showrooms-bg {
@@ -67,6 +57,7 @@
 
 {% schema %}
   {
+    "name": "showrooms",
     "settings": [
       {
         "type": "text",
