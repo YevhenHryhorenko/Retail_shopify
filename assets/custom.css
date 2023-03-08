@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
 	font-family: "Proxima Nova";
 	src: url("./Proxima Nova Regular.eot");
 	src: url("./Proxima Nova Regular.eot?#iefix") format("embedded-opentype"),
@@ -52,7 +52,7 @@
 	/* position: absolute !important;
     bottom: -30px !important;
     height: 170px !important;
-	background-color: #fff; */
+	background-color: #fff;
 }
 
 .collections-card {
@@ -100,5 +100,145 @@
 @media screen and (min-width: 992px) {
 	.collections-item-price {
 		font-size: 16px;
+	}
+} */
+
+video {
+	width: 100%;
+}
+
+@media screen and (min-width: 2379px) {
+	.video {
+		margin-top: -5vw;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.wrap {
+		flex-direction: column;
+	}
+}
+
+.video-wrap {
+	max-height: 600px;
+	overflow: hidden;
+}
+
+.video-wrap--default {
+	flex-basis: 50%;
+	display: flex;
+	align-items: center;
+}
+
+.d-inline-b {
+	display: inline-block;
+}
+
+.section-container {
+	padding: 0 20px;
+	max-width: 1500px;
+	margin: 0 auto;
+}
+
+.tal {
+	text-align: left;
+}
+
+.tar {
+	text-align: right;
+}
+
+.marg-b-25 {
+	margin-bottom: 25px;
+}
+
+.display-flex {
+	display: flex;
+	align-items: center;
+}
+
+.fd-column {
+	flex-direction: column;
+}
+
+.txt {
+	font-size: 16px;
+	letter-spacing: 0.5px;
+	line-height: 20px;
+}
+
+@media screen and (min-width: 992px) {
+	.txt {
+		line-height: 25px;
+	}
+}
+
+.btn--small {
+	font-size: 12px;
+	letter-spacing: 1.2px;
+	line-height: 17px;
+	color: #000000;
+	text-transform: uppercase;
+	text-decoration: underline;
+	transition: all 0.3s ease-in-out;
+}
+
+.btn--small:hover {
+	text-decoration: none;
+}
+
+.description__best_way {
+	max-width: 700px;
+	margin-left: auto;
+}
+
+@media screen and (max-width: 992px) {
+	.description__best_way {
+		margin-left: 0;
+		text-align: center;
+	}
+}
+
+.ai-normal {
+	align-items: normal;
+}
+
+.description--stretch {
+	width: 100%;
+	flex-basis: 50%;
+	background-color: #ff0000;
+	display: flex;
+	align-items: center;
+	padding: 20px;
+}
+
+@media screen and (max-width: 992px) {
+	.description--stretch {
+		justify-content: center;
+	}
+}
+
+.h3 {
+	text-transform: uppercase;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 1;
+}
+
+@media screen and (min-width: 768px) {
+	.h3 {
+		font-size: 20px;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.h3 {
+		font-size: 25px;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.h3 {
+		font-size: 42px;
 	}
 }

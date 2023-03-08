@@ -1,0 +1,40 @@
+<section>
+  <div class="{% unless section.settings.checkbox_section_stretch %} section-container {% endunless %}">
+    <div class="display-flex ai-normal wrap">
+      <div class="description--stretch">
+        <div class="tal {% if section.settings.checkbox_section_stretch %} description__best_way {% endif %}">
+          <h3 class="h3 marg-b-25">The best way to restore beauty, youth, health and strength</h3>
+          <p class="txt marg-b-25">
+            Dermacolla - the premium brand in German vitamins. They are aimed at preserving and restoring natural
+            beauty, moisturizing the skin, accelerating hair growth and strengthening nails, delivering vital moisture
+                        to the tissues, and aiding the process that leads to the reduction of cellulite.
+          </p>
+          <a class="btn--small" href="">About dermacolla</a>
+        </div>
+      </div>
+      <div class="video-wrap--default {% if section.settings.checkbox_section_stretch %} video-wrap {% endif %}">
+        <video
+          class="{% if section.settings.checkbox_section_stretch %} video {% endif %}"
+          loop=""
+          autoplay=""
+          muted=""
+          id="vid">
+          <source src="https://cdn.shopify.com/s/files/1/0613/5654/0062/files/dermacolla_video_1080.mp4?v=1652206982" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "best_way",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "checkbox_section_stretch",
+        "label": "Stretch the section to full screen"
+      }
+    ]
+  }
+{% endschema %}

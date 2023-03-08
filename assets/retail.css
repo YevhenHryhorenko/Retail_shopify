@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: "Proxima Nova";
     src: url("./Proxima%20Nova%20Regular.eot");
     src: url("./Proxima%20Nova%20Regular.eot?#iefix") format("embedded-opentype"),
@@ -26,7 +26,7 @@
         url("./Proxima%20Nova%20Semibold.svg") format("svg");
     font-weight: 600;
     font-style: normal;
-}
+}*/
 
 * {
     padding: 0;
@@ -123,10 +123,10 @@ h6 {
     color: red;
 }
 
-body {
+/* body {
     font-family: "Proxima Nova", sans-serif;
     background-color: #fff;
-}
+} */
 
 hr {
     border-bottom: 3px solid #c4c4c4;

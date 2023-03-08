@@ -1,5 +1,11 @@
 {
   "sections": {
+    "best_way": {
+      "type": "best_way",
+      "settings": {
+
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "settings": {
@@ -40,23 +46,15 @@
       "settings": {
         "link_collections": "/collections"
       }
-    },
-    "showrooms": {
-      "type": "showrooms",
-      "settings": {
-        "link_collections": "/collections",
-        "showrooms_img": "shopify:\/\/shop_images\/showrooms.jpg",
-        "showrooms_bg_img": "shopify:\/\/shop_images\/showrooms.jpg"
-      }
     }
   },
   "order": [
+    "best_way",
     "image_banner",
     "category_products",
     "vision",
     "solutions",
     "projects",
-    "custom-collection",
-    "showrooms"
+    "custom-collection"
   ]
 }
